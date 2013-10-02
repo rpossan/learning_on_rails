@@ -1,0 +1,32 @@
+<p><button onclick="getData();">atualizar</button></p>
+
+<div id="content">
+<table id="myTable">
+  <tbody></tbody>  
+</table>
+</div>
+
+<script type="text/javascript">
+function getData() {    
+  $.get('panel/posts_store/', {param:"oi"}, function(postsStore){
+        var content = '';
+        $("#content").hide();
+        
+        for (var i = 0; i < postsStore.length; i++) {
+          content += '<tr>';
+          content += '<td>' + postsStore[i].description + '</td>';
+          content += '</tr>';
+        }
+        $('#myTable tbody').html(content);
+        $('#content').slideDown("slow");
+    });
+};
+  
+(
+  function worker(){
+    // getData();
+    //setTimeout(worker, 5000);
+  }
+)();
+  
+</script>

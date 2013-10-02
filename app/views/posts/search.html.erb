@@ -1,0 +1,5 @@
+<h1>Search results for <u><%= params[:query] %></u></h1>
+
+<% @posts.each do |p| %>
+<p><b><%= p.user.name %></b> (<%= p.created_at %>) - <i><%= p.description %></i></p>
+<% end %>

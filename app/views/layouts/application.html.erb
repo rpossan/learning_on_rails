@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fwitter</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <script src="https://togetherjs.com/togetherjs-min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+
+  <a href="/"><%= image_tag 'logo.jpg' %></a>
+  
+  <!--<p><button onclick="TogetherJS(this); return false;">Chat Now !</button></p>-->
+  
+<%= yield %>
+
+</body>
+</html>

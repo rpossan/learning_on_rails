@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  birthday: 2013-09-10
+  profile: MyString
+  active: false
+
+two:
+  name: MyString
+  birthday: 2013-09-10
+  profile: MyString
+  active: false

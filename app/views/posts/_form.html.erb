@@ -1,0 +1,39 @@
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.hidden_field :user_id, :value => (@post.user_id.nil? ? params[:user_id] : @post.user_id) %>
+
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :rows => 5, :cols => 75, :onKeyUp => "checkChars(this);" %>
+    <div style="padding-left: 600px;"><label id="charCounter">140</label></div>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  var last_text = "";
+  function checkChars(el){
+    var chars = el.value.length;
+    chars = 140-chars;
+    if(chars < 0){
+     el.value = last_text;
+    }else{
+     last_text = el.value;
+    }
+    chars = 140-last_text.length;
+    document.getElementById('charCounter').innerHTML = chars;    
+  }
+</script>

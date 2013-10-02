@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Birthday:</b>
+  <%= @user.birthday %>
+</p>
+
+<p>
+  <b>Profile:</b>
+  <%= @user.profile %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%= @user.active %>
+</p>
+
+<h2>Posts</h2>
+
+<% @user.posts.each do |p| %>
+  <p><b><%= p.created_at %></b> - <i><%= p.description %></i>
+  <%= link_to 'Edit', edit_post_path(p) %> |
+    <%= link_to 'Destroy', p, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<% end %>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>

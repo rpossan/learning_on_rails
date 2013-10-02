@@ -1,0 +1,44 @@
+<h1>Listing users</h1>
+
+<p id="notice"><%= params[:notice] %></p>
+
+<form action="<%= url_for :controller => 'posts', :action => 'search' %>" method="get">
+  <%= label_tag :search %><input type="text" name="search" /><button type="submit">Search</button>
+</form>
+
+<br />
+Trending Topics:
+<% @tt.each do |post| %>
+<%= link_to(post, "posts/trending/#{post}") %> |
+<% end %>
+<br /><br/>
+
+<table>
+  <tr>
+    <th><%= link_to 'Name', :action => 'index', :order => set_order("name") %></th>
+    <th><%= link_to 'Birthday', :action => 'index', :order => set_order("birthday") %></th>
+    <th><%= link_to 'Posts', :action => 'index', :order => set_order("posts") %></th>
+    <th><%= link_to 'Active', :action => 'index', :order => set_order("active") %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= user.birthday %></td>
+    <td><b><%= user.posts.size %></b></td>
+    <td><%= user.active %></td>
+    <td><%= link_to 'New Post', url_for(:controller => 'posts', :action => 'new', :user_id => user.id), :class => "btn", :id => "new" %></td>
+    <td><%= link_to 'Show', user, {:class => "btn", :id => "show"} %></td>
+    <td><%= link_to 'Edit', edit_user_path(user), {:class => "btn", :id => "edit"} %></td>
+    <td><%= link_to 'X', user, {method: :delete, data: { confirm: 'Are you sure?' }, class: "btn", id: "delete"} %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User', new_user_path, {class: "btn", id: "new"} %>
