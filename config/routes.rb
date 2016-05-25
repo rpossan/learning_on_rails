@@ -1,5 +1,6 @@
 Fwitter::Application.routes.draw do
   match 'panel' => 'panel#index'
+  match 'panel/posts' => 'panel#posts'
   match "panel/posts_store" => 'panel#posts_store'
 
   #resources :posts

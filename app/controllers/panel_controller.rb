@@ -7,4 +7,8 @@ class PanelController < ApplicationController
     render :json => posts 
   end
   
+  def posts
+    @posts = Post.all
+  end
+  
 end
